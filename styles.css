@@ -1,0 +1,788 @@
+/* ==========================================================================
+   Samata Beer — Nano Brewery, Art, Lifestyle
+   Palette and type scale ported 1:1 from the design source.
+   ========================================================================== */
+
+:root {
+  --ink: #141414;
+  --paper: #FAF8F1;
+  --lime: #CCD936;
+  --pink: #F5BFCD;
+  --slate: #35424E;
+  --gold: #F2C230;
+
+  --shell: 1200px;
+  --gutter: 32px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Space Grotesk', 'IBM Plex Sans Thai', sans-serif;
+}
+
+img { max-width: 100%; }
+
+a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.shell {
+  max-width: var(--shell);
+  margin: 0 auto;
+}
+
+.thai { font-family: 'IBM Plex Sans Thai', sans-serif; }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Section rhythm ---------------------------------------------------------- */
+
+.section {
+  padding: 96px var(--gutter);
+}
+
+.section-heading {
+  font-family: Anton, sans-serif;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* Header ------------------------------------------------------------------ */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--paper);
+  border-bottom: 1px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 14px var(--gutter);
+}
+
+.site-header__logo { display: flex; align-items: center; }
+
+.site-header__logo img {
+  height: 30px;
+  display: block;
+}
+
+.site-nav {
+  display: flex;
+  gap: 28px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* Hero -------------------------------------------------------------------- */
+
+.hero {
+  background: var(--lime);
+  padding: 72px var(--gutter) 88px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 56px;
+  align-items: center;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.hero__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding-left: 24px;
+}
+
+.hero__wordmark {
+  width: min(520px, 100%);
+  display: block;
+}
+
+.hero__title {
+  font-family: Anton, sans-serif;
+  font-size: clamp(36px, 4.2vw, 58px);
+  line-height: 1.05;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hero__thai {
+  font-family: 'IBM Plex Sans Thai', sans-serif;
+  font-size: 17px;
+  margin: 0;
+  max-width: 46ch;
+}
+
+.hero__actions {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.hero__tagline {
+  font-style: italic;
+  font-size: 16px;
+}
+
+.hero__art {
+  display: flex;
+  justify-content: center;
+}
+
+.hero__art img {
+  width: min(420px, 90%);
+  border: 3px solid var(--ink);
+  box-shadow: 12px 12px 0 var(--ink);
+  transform: rotate(2deg);
+}
+
+.btn {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 14px 26px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  background: var(--pink);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+/* Marquee ----------------------------------------------------------------- */
+
+.marquee {
+  background: var(--ink);
+  color: var(--lime);
+  overflow: hidden;
+  padding: 12px 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marq 40s linear infinite;
+  will-change: transform;
+}
+
+.marquee__track span {
+  font-family: Anton, sans-serif;
+  font-size: 18px;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  padding-right: 8px;
+}
+
+@keyframes marq {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee__track { animation: none; }
+}
+
+/* Beers ------------------------------------------------------------------- */
+
+.beers__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 56px;
+}
+
+.beers__head h2 { font-size: clamp(52px, 7vw, 92px); }
+
+.beers__meta {
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.beers__meta .thai {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.beer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+.beer-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform 0.2s ease;
+}
+
+.beer-card:hover { transform: translateY(-6px); }
+
+.frame {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border: 2px solid var(--ink);
+}
+
+.frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.beer-card h3 {
+  font-family: Anton, sans-serif;
+  font-size: 30px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.tags {
+  display: flex;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  flex-wrap: wrap;
+}
+
+.tag--solid {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 5px 10px;
+}
+
+.tag--outline {
+  border: 1.5px solid var(--ink);
+  padding: 5px 10px;
+}
+
+.beer-card p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.care-tags {
+  margin-top: 40px;
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  flex-wrap: wrap;
+}
+
+.care-tags span {
+  padding: 6px 12px;
+  border: 1.5px solid var(--ink);
+}
+
+.care-tags .cold { background: var(--lime); }
+.care-tags .fresh { background: var(--pink); }
+
+/* Sub-collections (limited + collaborations) ------------------------------ */
+
+.collection {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.collection--limited { margin-top: 80px; }
+.collection--collabs { margin-top: 64px; }
+
+.collection__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.collection__head h3 {
+  font-family: Anton, sans-serif;
+  font-size: clamp(26px, 3vw, 36px);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.collection__head span { font-size: 14px; }
+
+.tile-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.tile-grid--collabs {
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+}
+
+.tile {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tile figcaption {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* Awards ------------------------------------------------------------------ */
+
+.awards {
+  background: var(--slate);
+  color: var(--paper);
+}
+
+.awards__inner {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.awards__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.awards .eyebrow { color: var(--gold); }
+
+.awards h2 {
+  font-size: clamp(40px, 5vw, 68px);
+  line-height: 1.05;
+}
+
+.award-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba(250, 248, 241, 0.3);
+}
+
+.award-row {
+  display: grid;
+  grid-template-columns: 52px 1fr auto;
+  gap: 14px;
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(250, 248, 241, 0.3);
+  align-items: baseline;
+}
+
+.award-row__year {
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.award-row__title {
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.award-row__beer { font-size: 14px; }
+
+.awards__note {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(250, 248, 241, 0.85);
+  max-width: 52ch;
+}
+
+.awards__art { display: flex; justify-content: center; }
+
+.awards__art img {
+  width: min(440px, 100%);
+  border: 3px solid var(--ink);
+  box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.35);
+}
+
+/* Brand ------------------------------------------------------------------- */
+
+.brand h2 {
+  font-size: clamp(40px, 5.5vw, 76px);
+  margin: 0 0 56px;
+}
+
+.brand__inner {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.brand__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.brand__lede {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.brand__thai {
+  margin: 0;
+  font-family: 'IBM Plex Sans Thai', sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #3a3a3a;
+}
+
+.spec-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1.5px solid var(--ink);
+}
+
+.spec-row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1.5px solid var(--ink);
+}
+
+.spec-row dt {
+  margin: 0;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.spec-row dd {
+  margin: 0;
+  font-size: 15px;
+}
+
+.founder {
+  background: var(--pink);
+  border: 2px solid var(--ink);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.founder img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: 22% 55%;
+  border: 2px solid var(--ink);
+}
+
+.founder__name {
+  font-family: Anton, sans-serif;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
+.founder__role {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.founder blockquote {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* World stage banner ------------------------------------------------------ */
+
+.world {
+  border-top: 1.5px solid var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+}
+
+.world img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  object-position: center 8%;
+  display: block;
+}
+
+.world__caption {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 14px var(--gutter);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: var(--paper);
+  border-top: 1.5px solid var(--ink);
+}
+
+/* Taproom ----------------------------------------------------------------- */
+
+.taproom { background: var(--pink); }
+
+.taproom__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.taproom__photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+}
+
+.taproom__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.taproom__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.taproom h2 {
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1.05;
+}
+
+.taproom .spec-row { grid-template-columns: 120px 1fr; padding: 14px 0; }
+
+/* Stockists --------------------------------------------------------------- */
+
+.stockists__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.stockists__head h2 { font-size: clamp(40px, 5.5vw, 72px); }
+
+.stockists__head div { font-size: 14px; }
+
+.stockist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0;
+  border-top: 1.5px solid var(--ink);
+}
+
+.stockist {
+  padding: 24px 16px 24px 0;
+  border-bottom: 1.5px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stockist__city {
+  font-family: Anton, sans-serif;
+  font-size: 22px;
+  text-transform: uppercase;
+}
+
+.stockist__where {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Footer ------------------------------------------------------------------ */
+
+.site-footer {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 80px var(--gutter) 40px;
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.site-footer__logo {
+  width: min(420px, 80%);
+  filter: invert(1);
+}
+
+.site-footer__contacts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact__label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--lime);
+}
+
+.contact a { color: var(--paper); }
+
+.site-footer__legal {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(250, 248, 241, 0.25);
+  padding-top: 24px;
+  font-size: 13px;
+  color: rgba(250, 248, 241, 0.7);
+}
+
+/* Responsive -------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  :root { --gutter: 20px; }
+
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .site-nav {
+    gap: 18px;
+    flex-wrap: wrap;
+    font-size: 12px;
+  }
+
+  .section { padding: 64px var(--gutter); }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 48px var(--gutter) 64px;
+  }
+
+  .hero__copy { padding-left: 0; gap: 22px; }
+
+  .awards__inner,
+  .brand__inner,
+  .taproom__inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .awards__art { order: -1; }
+
+  .beers__head { margin-bottom: 36px; }
+
+  .collection--limited { margin-top: 56px; }
+
+  .world img { height: 240px; }
+}
+
+@media (max-width: 640px) {
+  .award-row {
+    grid-template-columns: 46px 1fr;
+    row-gap: 4px;
+  }
+
+  .award-row__beer { grid-column: 2; }
+
+  .spec-row,
+  .taproom .spec-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .beer-grid { grid-template-columns: 1fr; }
+
+  .tile-grid,
+  .tile-grid--collabs { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+
+  .site-footer__legal { flex-direction: column; gap: 10px; }
+}

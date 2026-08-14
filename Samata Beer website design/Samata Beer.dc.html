@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Sans+Thai:wght@400;600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #FAF8F1; color: #141414; font-family: 'Space Grotesk', 'IBM Plex Sans Thai', sans-serif; }
+a { color: #141414; text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 4px; }
+@keyframes marq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+</style>
+</helmet>
+
+<header style="position:sticky;top:0;z-index:50;background:#FAF8F1;border-bottom:1px solid #141414;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px 32px">
+  <a href="#top" style="display:flex;align-items:center"><img src="assets/logo.png" alt="samata" style="height:30px;display:block;mix-blend-mode:multiply"></a>
+  <nav style="display:flex;gap:28px;font-size:13px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase">
+    <a href="#beers">Beers</a>
+    <a href="#awards">Awards</a>
+    <a href="#brand">Brand</a>
+    <a href="#taproom">Taproom</a>
+    <a href="#stockists">Stockists</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section id="top" ref="{{ heroRef }}" data-screen-label="Hero" style="background:#CCD936;padding:72px 32px 88px;display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:center;max-width:100%;overflow:hidden">
+  <div style="display:flex;flex-direction:column;gap:28px;padding-left:24px">
+    <div style="font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase">Nano Brewery &middot; Art &middot; Lifestyle</div>
+    <img src="assets/logo.png" alt="samata" style="width:min(520px,100%);display:block;mix-blend-mode:multiply">
+    <h1 style="font-family:Anton,sans-serif;font-size:clamp(36px,4.2vw,58px);line-height:1.05;margin:0;text-transform:uppercase;letter-spacing:0.5px">Award-winning Thai fruited sour</h1>
+    <sc-if value="{{ showThai }}" hint-placeholder-val="{{ true }}">
+      <p style="font-family:'IBM Plex Sans Thai',sans-serif;font-size:17px;margin:0;max-width:46ch">เบียร์เปรี้ยวผลไม้สัญชาติไทย ต้มด้วยผลไม้จริงและวัตถุดิบขนมหวานไทย จากโรงเบียร์ขนาดเล็กในกรุงเทพฯ</p>
+    </sc-if>
+    <div style="display:flex;gap:14px;align-items:center">
+      <a href="#beers" style="background:#141414;color:#FAF8F1;padding:14px 26px;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase" style-hover="background:#F5BFCD;color:#141414;text-decoration:none">See the beers</a>
+      <span style="font-style:italic;font-size:16px">Sip the Fresh, Taste the Fruit</span>
+    </div>
+  </div>
+  <div style="display:flex;justify-content:center">
+    <img src="uploads/048_DRtXAI8kh27.jpg" alt="Samata fruited sour core collection" style="width:min(420px,90%);border:3px solid #141414;box-shadow:12px 12px 0 #141414;transform:rotate(2deg)">
+  </div>
+</section>
+
+<sc-if value="{{ showMarquee }}" hint-placeholder-val="{{ true }}">
+  <div style="background:#141414;color:#CCD936;overflow:hidden;padding:12px 0;border-top:1px solid #141414;border-bottom:1px solid #141414">{{ marqueeEl }}</div>
+</sc-if>
+
+<section id="beers" data-screen-label="Beers" style="padding:96px 32px;max-width:1200px;margin:0 auto">
+  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:56px">
+    <h2 style="font-family:Anton,sans-serif;font-size:clamp(52px,7vw,92px);margin:0;text-transform:uppercase">The Beers</h2>
+    <div style="font-size:14px;letter-spacing:2px;text-transform:uppercase;font-weight:500">Fruited Sours &middot; 4.0% ABV &middot; <span style="font-family:'IBM Plex Sans Thai',sans-serif;text-transform:none;letter-spacing:0">เบียร์เปรี้ยวผลไม้</span></div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px">
+    <article style="display:flex;flex-direction:column;gap:16px" style-hover="transform:translateY(-6px)">
+      <div style="aspect-ratio:4/5;overflow:hidden;border:2px solid #141414"><img src="uploads/073_DILr9zZJN3d.jpg" alt="Mango Sticky Rice can" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <h3 style="font-family:Anton,sans-serif;font-size:30px;margin:0;text-transform:uppercase">Mango Sticky Rice</h3>
+      <div style="display:flex;gap:10px;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">
+        <span style="background:#141414;color:#FAF8F1;padding:5px 10px">Fruited Sour</span>
+        <span style="border:1.5px solid #141414;padding:5px 10px">4.0% ABV</span>
+      </div>
+      <p style="margin:0;font-size:15px;line-height:1.6">The gem of Siam in a can — Nam Dok Mai mango, smooth coconut milk and a touch of salt, honoring a 200-year-old Thai recipe. <span style="font-family:'IBM Plex Sans Thai',sans-serif">ข้าวเหนียวมะม่วงในเบียร์เปรี้ยว</span></p>
+    </article>
+    <article style="display:flex;flex-direction:column;gap:16px" style-hover="transform:translateY(-6px)">
+      <div style="aspect-ratio:4/5;overflow:hidden;border:2px solid #141414"><img src="uploads/013_Da1kiueNlzq.jpg" alt="Pineapple Yuzu Cardamom can" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <h3 style="font-family:Anton,sans-serif;font-size:30px;margin:0;text-transform:uppercase">Pineapple Yuzu Cardamom</h3>
+      <div style="display:flex;gap:10px;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">
+        <span style="background:#141414;color:#FAF8F1;padding:5px 10px">Fruited Sour</span>
+        <span style="border:1.5px solid #141414;padding:5px 10px">4.0% ABV</span>
+      </div>
+      <p style="margin:0;font-size:15px;line-height:1.6">Bright pineapple and yuzu with a warm whisper of green cardamom — tart, aromatic and dangerously refreshing. <span style="font-family:'IBM Plex Sans Thai',sans-serif">สับปะรด ยูซุ กระวาน</span></p>
+    </article>
+    <article style="display:flex;flex-direction:column;gap:16px" style-hover="transform:translateY(-6px)">
+      <div style="aspect-ratio:4/5;overflow:hidden;border:2px solid #141414"><img src="uploads/031_DXQ3NiKkajn.jpg" alt="Orange Creamsicle can" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <h3 style="font-family:Anton,sans-serif;font-size:30px;margin:0;text-transform:uppercase">Orange Creamsicle</h3>
+      <div style="display:flex;gap:10px;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">
+        <span style="background:#141414;color:#FAF8F1;padding:5px 10px">Fruited Sour</span>
+        <span style="border:1.5px solid #141414;padding:5px 10px">4.0% ABV</span>
+      </div>
+      <p style="margin:0;font-size:15px;line-height:1.6">Juicy orange swirled with vanilla ice cream — a childhood popsicle, all grown up. <span style="font-family:'IBM Plex Sans Thai',sans-serif">ส้มกับวานิลลาไอศกรีม</span></p>
+    </article>
+  </div>
+  <div style="margin-top:40px;display:flex;gap:12px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase">
+    <span style="background:#CCD936;padding:6px 12px;border:1.5px solid #141414">Keep cold</span>
+    <span style="background:#F5BFCD;padding:6px 12px;border:1.5px solid #141414">Drink fresh</span>
+  </div>
+  <div style="margin-top:80px;display:flex;flex-direction:column;gap:24px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <h3 style="font-family:Anton,sans-serif;font-size:clamp(26px,3vw,36px);margin:0;text-transform:uppercase">Limited &amp; Seasonal</h3>
+      <span style="font-size:14px;font-family:'IBM Plex Sans Thai',sans-serif">ตัวพิเศษหมุนเวียนตลอดปี</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px">
+      <figure style="margin:0;display:flex;flex-direction:column;gap:10px">
+        <div style="aspect-ratio:4/5;overflow:hidden;border:2px solid #141414"><img src="uploads/032_DWsqN3CkSy1.jpg" alt="Thai Summer series fruited sours" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+        <figcaption style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">Thai Summer Series</figcaption>
+      </figure>
+      <figure style="margin:0;display:flex;flex-direction:column;gap:10px">
+        <div style="aspect-ratio:4/5;overflow:hidden;border:2px solid #141414"><img src="uploads/016_DahKnZ4x3l5.jpg" alt="Strawberry Shortcake fruited sour" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+        <figcaption style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">Strawberry Shortcake</figcaption>
+      </figure>
+      <figure style="margin:0;display:flex;flex-direction:column;gap:10px">
+        <div style="aspect-ratio:4/5;overflow:hidden;border:2px solid #141414"><img src="uploads/039_DUww91bkTVP.jpg" alt="Pink Illusion fruited sour" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+        <figcaption style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">Pink Illusion</figcaption>
+      </figure>
+      <figure style="margin:0;display:flex;flex-direction:column;gap:10px">
+        <div style="aspect-ratio:4/5;overflow:hidden;border:2px solid #141414"><img src="uploads/055_DPdHMVIkTR9.jpg" alt="Halloween fruited sour limited edition" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+        <figcaption style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">Halloween Edition</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div style="margin-top:64px;display:flex;flex-direction:column;gap:24px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <h3 style="font-family:Anton,sans-serif;font-size:clamp(26px,3vw,36px);margin:0;text-transform:uppercase">Collaborations</h3>
+      <span style="font-size:14px;font-family:'IBM Plex Sans Thai',sans-serif">ต้มร่วมกับโรงเบียร์ทั่วโลก</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:20px">
+      <figure style="margin:0;display:flex;flex-direction:column;gap:10px">
+        <div style="aspect-ratio:4/5;overflow:hidden;border:2px solid #141414"><img src="uploads/047_DR1agclEXc5.jpg" alt="After Party with One Drop Brewing" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+        <figcaption style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">After Party &times; One Drop</figcaption>
+      </figure>
+      <figure style="margin:0;display:flex;flex-direction:column;gap:10px">
+        <div style="aspect-ratio:4/5;overflow:hidden;border:2px solid #141414"><img src="uploads/007_Dbrtcv0xTL9.jpg" alt="Bino #42 Mango Pudding with Heroes Beer Co" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+        <figcaption style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">Bino #42 &times; Heroes</figcaption>
+      </figure>
+      <figure style="margin:0;display:flex;flex-direction:column;gap:10px">
+        <div style="aspect-ratio:4/5;overflow:hidden;border:2px solid #141414"><img src="uploads/002_DcBjaFMtnYm.jpg" alt="Bake Off Sago Pudding with Vault City" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+        <figcaption style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">Sago Pudding &times; Vault City</figcaption>
+      </figure>
+      <figure style="margin:0;display:flex;flex-direction:column;gap:10px">
+        <div style="aspect-ratio:4/5;overflow:hidden;border:2px solid #141414"><img src="uploads/010_DbFb_Xvsb7Y.jpg" alt="SIAM rice lager with Bad Seed Brewing" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+        <figcaption style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">SIAM &times; Bad Seed</figcaption>
+      </figure>
+      <figure style="margin:0;display:flex;flex-direction:column;gap:10px">
+        <div style="aspect-ratio:4/5;overflow:hidden;border:2px solid #141414"><img src="uploads/019_DaQr2qTij0d.jpg" alt="Pastry sour with Sudden Death Brewing" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+        <figcaption style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">Pastry Sour &times; Sudden Death</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="awards" data-screen-label="Awards" style="background:#35424E;color:#FAF8F1;padding:96px 32px">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center">
+    <div style="display:flex;flex-direction:column;gap:24px">
+      <div style="font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#F2C230">Awards</div>
+      <h2 style="font-family:Anton,sans-serif;font-size:clamp(40px,5vw,68px);margin:0;text-transform:uppercase;line-height:1.05">Award-winning, worldwide</h2>
+      <div style="display:flex;flex-direction:column;gap:0;border-top:1px solid rgba(250,248,241,0.3)">
+        <div style="display:grid;grid-template-columns:52px 1fr auto;gap:14px;padding:13px 0;border-bottom:1px solid rgba(250,248,241,0.3);align-items:baseline">
+          <span style="font-weight:700;color:#F2C230">2025</span>
+          <span style="font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:13px">Asia Beer Championship &middot; Chairman's Selection, Fruit Beer</span>
+          <span style="font-size:14px">Mango Sticky Rice</span>
+        </div>
+        <div style="display:grid;grid-template-columns:52px 1fr auto;gap:14px;padding:13px 0;border-bottom:1px solid rgba(250,248,241,0.3);align-items:baseline">
+          <span style="font-weight:700;color:#F2C230">2025</span>
+          <span style="font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:13px">Asia Beer Championship &middot; Chairman's Selection, Flavored Beer</span>
+          <span style="font-size:14px">Choco Berry</span>
+        </div>
+        <div style="display:grid;grid-template-columns:52px 1fr auto;gap:14px;padding:13px 0;border-bottom:1px solid rgba(250,248,241,0.3);align-items:baseline">
+          <span style="font-weight:700;color:#F2C230">2025</span>
+          <span style="font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:13px">Untappd Community Awards &middot; Gold, Sour Fruited (TH)</span>
+          <span style="font-size:14px">Mango Sticky Rice</span>
+        </div>
+        <div style="display:grid;grid-template-columns:52px 1fr auto;gap:14px;padding:13px 0;border-bottom:1px solid rgba(250,248,241,0.3);align-items:baseline">
+          <span style="font-weight:700;color:#F2C230">2025</span>
+          <span style="font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:13px">Craft Beer &amp; Brewing &middot; Top 10 Beers of the Year</span>
+          <span style="font-size:14px">Mango Sticky Rice</span>
+        </div>
+        <div style="display:grid;grid-template-columns:52px 1fr auto;gap:14px;padding:13px 0;border-bottom:1px solid rgba(250,248,241,0.3);align-items:baseline">
+          <span style="font-weight:700;color:#F2C230">2023</span>
+          <span style="font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:13px">Untappd &middot; #1 Sour Fruited in Thailand</span>
+          <span style="font-size:14px">Choco Berry</span>
+        </div>
+        <div style="display:grid;grid-template-columns:52px 1fr auto;gap:14px;padding:13px 0;border-bottom:1px solid rgba(250,248,241,0.3);align-items:baseline">
+          <span style="font-weight:700;color:#F2C230">2023</span>
+          <span style="font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:13px">Asia Beer Championship &middot; Silver Award</span>
+          <span style="font-size:14px">Choco Berry</span>
+        </div>
+        <div style="display:grid;grid-template-columns:52px 1fr auto;gap:14px;padding:13px 0;border-bottom:1px solid rgba(250,248,241,0.3);align-items:baseline">
+          <span style="font-weight:700;color:#F2C230">2022</span>
+          <span style="font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:13px">Asia Beer Championship &middot; Silver Award</span>
+          <span style="font-size:14px">Samata &times; TBP NEIPA</span>
+        </div>
+      </div>
+      <p style="margin:0;font-size:15px;line-height:1.7;color:rgba(250,248,241,0.85);max-width:52ch">From Bangkok to Copenhagen — named one of Craft Beer &amp; Brewing's Top 10 Beers of 2025 and poured at Mikkeller Beer Celebration, while capturing the hearts of Thai beer enthusiasts nationwide.</p>
+    </div>
+    <div style="display:flex;justify-content:center"><img src="uploads/054_DP_NrMgkdwC.jpg" alt="Asia Beer Championship 2025 winning cans" style="width:min(440px,100%);border:3px solid #141414;box-shadow:12px 12px 0 rgba(0,0,0,0.35)"></div>
+  </div>
+</section>
+
+<section id="brand" data-screen-label="Brand Story" style="padding:96px 32px;max-width:1200px;margin:0 auto">
+  <h2 style="font-family:Anton,sans-serif;font-size:clamp(40px,5.5vw,76px);margin:0 0 56px;text-transform:uppercase">Nano brewery, art, lifestyle</h2>
+  <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:64px;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:24px">
+      <p style="margin:0;font-size:18px;line-height:1.7">Founded in 2017, Samata Beer first commercially debuted in 2022 and has won numerous local and international awards since then.</p>
+      <sc-if value="{{ showThai }}" hint-placeholder-val="{{ true }}">
+        <p style="margin:0;font-family:'IBM Plex Sans Thai',sans-serif;font-size:16px;line-height:1.8;color:#3a3a3a">ซามาตะคือโรงเบียร์ขนาดเล็กที่เชื่อว่าเบียร์คืองานศิลปะ — ทุกกระป๋องคือภาพวาด ทุกจิบคือเรื่องเล่าของวัตถุดิบไทย</p>
+      </sc-if>
+      <div style="display:flex;flex-direction:column;border-top:1.5px solid #141414">
+        <div style="display:grid;grid-template-columns:180px 1fr;gap:16px;padding:16px 0;border-bottom:1.5px solid #141414">
+          <span style="font-weight:700;font-size:13px;letter-spacing:1.5px;text-transform:uppercase">Bold brews</span>
+          <span style="font-size:15px">Hops &amp; real fruits in NE IPAs &amp; sours</span>
+        </div>
+        <div style="display:grid;grid-template-columns:180px 1fr;gap:16px;padding:16px 0;border-bottom:1.5px solid #141414">
+          <span style="font-weight:700;font-size:13px;letter-spacing:1.5px;text-transform:uppercase">Innovation</span>
+          <span style="font-size:15px">Hop-forward beer, colorful beer, pastry ingredients</span>
+        </div>
+        <div style="display:grid;grid-template-columns:180px 1fr;gap:16px;padding:16px 0;border-bottom:1.5px solid #141414">
+          <span style="font-weight:700;font-size:13px;letter-spacing:1.5px;text-transform:uppercase">Nationally loved</span>
+          <span style="font-size:15px">Captured the hearts of Thai beer enthusiasts</span>
+        </div>
+      </div>
+    </div>
+    <div style="background:#F5BFCD;border:2px solid #141414;padding:28px;display:flex;flex-direction:column;gap:16px;align-items:flex-start">
+      <img src="uploads/061_DOAPdoVkpD5.jpg" alt="Chote at the Samata booth" style="width:100%;aspect-ratio:1/1;object-fit:cover;object-position:22% 55%;border:2px solid #141414">
+      <div style="font-family:Anton,sans-serif;font-size:24px;text-transform:uppercase">Chote Supachote</div>
+      <div style="font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase">Head Brewer of Samata</div>
+      <p style="margin:0;font-size:14px;line-height:1.6;font-style:italic">"Every sip will bring you through a journey through the history of Thailand."</p>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="World Stage" style="border-top:1.5px solid #141414;border-bottom:1.5px solid #141414">
+  <img src="uploads/025_DYsw5JaiMyl.jpg" alt="Samata Brewing banner over the crowd at Mikkeller Beer Celebration Copenhagen" style="width:100%;height:360px;object-fit:cover;object-position:center 8%;display:block">
+  <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:14px 32px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:#FAF8F1;border-top:1.5px solid #141414">
+    <span>Mikkeller Beer Celebration Copenhagen 2026</span>
+    <span>From Bangkok to the world</span>
+  </div>
+</section>
+
+<section id="taproom" data-screen-label="Taproom" style="background:#F5BFCD;padding:96px 32px">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+    <div style="width:100%;aspect-ratio:4/3"><image-slot id="taproom-photo" shape="rect" src="uploads/045_DS6MeUrk8Bl.jpg" placeholder="วางรูป taproom ที่นี่ — Drop a taproom photo"></image-slot></div>
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div style="font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase">Taproom</div>
+      <h2 style="font-family:Anton,sans-serif;font-size:clamp(40px,5vw,64px);margin:0;text-transform:uppercase;line-height:1.05">Proudly brewed in Bangkok, Thailand</h2>
+      <div style="display:flex;flex-direction:column;border-top:1.5px solid #141414">
+        <div style="display:grid;grid-template-columns:120px 1fr;gap:16px;padding:14px 0;border-bottom:1.5px solid #141414">
+          <span style="font-weight:700;font-size:13px;letter-spacing:1.5px;text-transform:uppercase">Address</span>
+          <span style="font-size:15px;font-family:'IBM Plex Sans Thai',sans-serif">กรุงเทพมหานคร (ที่อยู่เต็ม — ใส่ภายหลัง)</span>
+        </div>
+        <div style="display:grid;grid-template-columns:120px 1fr;gap:16px;padding:14px 0;border-bottom:1.5px solid #141414">
+          <span style="font-weight:700;font-size:13px;letter-spacing:1.5px;text-transform:uppercase">Hours</span>
+          <span style="font-size:15px">Tue–Sun · 17:00–24:00 (TBC)</span>
+        </div>
+        <div style="display:grid;grid-template-columns:120px 1fr;gap:16px;padding:14px 0;border-bottom:1.5px solid #141414">
+          <span style="font-weight:700;font-size:13px;letter-spacing:1.5px;text-transform:uppercase">On tap</span>
+          <span style="font-size:15px">Rotating fruited sours &amp; NE IPAs · 20L coupler D-type kegs</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stockists" data-screen-label="Stockists" style="padding:96px 32px;max-width:1200px;margin:0 auto">
+  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:40px">
+    <h2 style="font-family:Anton,sans-serif;font-size:clamp(40px,5.5vw,72px);margin:0;text-transform:uppercase">Stockists</h2>
+    <div style="font-size:14px;font-family:'IBM Plex Sans Thai',sans-serif">จากคราฟต์บาร์ทั่วไทย สู่บาร์ทั่วเอเชีย ออสเตรเลีย และยุโรป</div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0;border-top:1.5px solid #141414">
+    <div style="padding:24px 16px 24px 0;border-bottom:1.5px solid #141414;display:flex;flex-direction:column;gap:6px">
+      <span style="font-family:Anton,sans-serif;font-size:22px;text-transform:uppercase">Bangkok</span>
+      <span style="font-size:14px;color:#666">คราฟต์บาร์ทั่วเมือง — Tai Soon Bar และอีกมากมาย</span>
+    </div>
+    <div style="padding:24px 16px 24px 0;border-bottom:1.5px solid #141414;display:flex;flex-direction:column;gap:6px">
+      <span style="font-family:Anton,sans-serif;font-size:22px;text-transform:uppercase">Singapore</span>
+      <span style="font-size:14px;color:#666">Smith Street Taps &middot; Beerstyle &middot; American Taproom</span>
+    </div>
+    <div style="padding:24px 16px 24px 0;border-bottom:1.5px solid #141414;display:flex;flex-direction:column;gap:6px">
+      <span style="font-family:Anton,sans-serif;font-size:22px;text-transform:uppercase">Hong Kong &amp; Sydney</span>
+      <span style="font-size:14px;color:#666">Heroes Beer Co &middot; One Drop Brewing Co</span>
+    </div>
+    <div style="padding:24px 16px 24px 0;border-bottom:1.5px solid #141414;display:flex;flex-direction:column;gap:6px">
+      <span style="font-family:Anton,sans-serif;font-size:22px;text-transform:uppercase">China</span>
+      <span style="font-size:14px;color:#666">El Nido &middot; Benneng — first launch 2026</span>
+    </div>
+  </div>
+</section>
+
+<footer id="contact" data-screen-label="Contact" style="background:#141414;color:#FAF8F1;padding:80px 32px 40px">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:48px">
+    <img src="assets/logo.png" alt="samata" style="width:min(420px,80%);filter:invert(1)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <span style="font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#CCD936">Email</span>
+        <a href="mailto:hello@samatabeer.com" style="color:#FAF8F1">hello@samatabeer.com</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <span style="font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#CCD936">Instagram</span>
+        <a href="https://www.instagram.com/samatabrewing" style="color:#FAF8F1">@samatabrewing</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <span style="font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#CCD936">LINE</span>
+        <a href="#contact" style="color:#FAF8F1">@samatabrewing</a>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;border-top:1px solid rgba(250,248,241,0.25);padding-top:24px;font-size:13px;color:rgba(250,248,241,0.7)">
+      <span>Proudly brewed in Bangkok, Thailand · Sip the Fresh, Taste the Fruit</span>
+      <span style="font-family:'IBM Plex Sans Thai',sans-serif">โปรดดื่มอย่างรับผิดชอบ · Drink responsibly</span>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;heroBg&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#CCD936&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#CCD936&quot;, &quot;#F5BFCD&quot;, &quot;#F2C230&quot;], &quot;section&quot;: &quot;Look&quot;},
+  &quot;showThai&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Content&quot;},
+  &quot;marquee&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Content&quot;}
+}">
+class Component extends DCLogic {
+  heroRef = React.createRef();
+  componentDidMount() { this.applyHero(); }
+  componentDidUpdate() { this.applyHero(); }
+  applyHero() {
+    if (this.heroRef.current) this.heroRef.current.style.background = this.props.heroBg ?? '#CCD936';
+  }
+  renderVals() {
+    const text = 'SIP THE FRESH \u2022 TASTE THE FRUIT \u2022 FRUITED SOURS \u2022 BREWED IN BANGKOK \u2022 NANO BREWERY, ART, LIFESTYLE \u2022 ';
+    const span = (key) => React.createElement('span', { key, style: { fontFamily: 'Anton, sans-serif', fontSize: 18, letterSpacing: 2, whiteSpace: 'nowrap', paddingRight: 8 } }, text.repeat(3));
+    const marqueeEl = React.createElement('div', { style: { display: 'flex', width: 'max-content', animation: 'marq 40s linear infinite', willChange: 'transform' } }, span('a'), span('b'));
+    return {
+      heroRef: this.heroRef,
+      marqueeEl,
+      showThai: this.props.showThai ?? true,
+      showMarquee: this.props.marquee ?? true,
+    };
+  }
+}
+</script>
+</body>
+</html>
