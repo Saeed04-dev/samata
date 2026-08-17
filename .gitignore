@@ -1,4 +1,11 @@
 .DS_Store
+note.md
 
-uploads/
+# Local-only source material — not served by the site.
+# Everything under uploads/ is ignored by default so raw originals can never be
+# committed by accident; the 17 images the page already uses are tracked and
+# stay tracked. Gallery renditions live in assets/gallery/ (tracked) and are
+# regenerated from uploads/samatabrewing/ by tools/build-gallery.py.
+uploads/*/
 Samata Beer website design/
+note.md

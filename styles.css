@@ -585,6 +585,114 @@ a:hover {
   border-top: 1.5px solid var(--ink);
 }
 
+/* Gallery ----------------------------------------------------------------- */
+
+.gallery__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.gallery__head h2 { font-size: clamp(40px, 5.5vw, 72px); }
+
+.gallery__head a {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gallery-item {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 1.5px solid var(--ink);
+  background: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.gallery-item:hover { transform: translateY(-4px); }
+
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+/* Lightbox ---------------------------------------------------------------- */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px;
+  background: rgba(20, 20, 20, 0.94);
+}
+
+.lightbox[hidden] { display: none; }
+
+.lightbox__img {
+  max-width: 92vw;
+  max-height: 86vh;
+  object-fit: contain;
+}
+
+.lightbox__close,
+.lightbox__nav {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--paper);
+  font-family: inherit;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightbox__close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 40px;
+}
+
+.lightbox__nav { font-size: 56px; }
+
+.lightbox__count {
+  position: absolute;
+  bottom: 18px;
+  left: 0;
+  right: 0;
+  margin: 0;
+  /* Full-width strip — must not swallow backdrop clicks that should close. */
+  pointer-events: none;
+  text-align: center;
+  color: var(--paper);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.lightbox :focus-visible { outline: 3px solid var(--paper); }
+
 /* Taproom ----------------------------------------------------------------- */
 
 .taproom { background: var(--pink); }
@@ -755,6 +863,8 @@ a:hover {
   .collection--limited { margin-top: 56px; }
 
   .world img { height: 240px; }
+
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 640px) {
@@ -777,4 +887,12 @@ a:hover {
   .tile-grid--collabs { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
 
   .site-footer__legal { flex-direction: column; gap: 10px; }
+
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+
+  .lightbox { padding: 12px; gap: 4px; }
+
+  .lightbox__nav { font-size: 36px; }
+
+  .lightbox__close { font-size: 32px; top: 8px; right: 12px; }
 }
